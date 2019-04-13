@@ -1,7 +1,6 @@
 package com.veontomo.todo.persistence;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
-
+import com.veontomo.todo.model.Item;
 
 public interface ItemRepository {
     /**

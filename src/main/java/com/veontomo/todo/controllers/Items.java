@@ -1,11 +1,11 @@
 package com.veontomo.todo.controllers;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.veontomo.todo.model.Item;
 import com.veontomo.todo.persistence.ItemRepository;
 /**
  * CRUD for handling the todo items

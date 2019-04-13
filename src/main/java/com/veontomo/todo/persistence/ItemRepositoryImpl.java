@@ -2,7 +2,7 @@ package com.veontomo.todo.persistence;
 
 import java.util.ArrayList;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
+import com.veontomo.todo.model.Item;
 
 /**
  * Implementation of {@link ItemRepository}.
@@ -16,7 +16,11 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public Iterable<Item> getAll() {
         // TODO Auto-generated method stub
-        return new ArrayList<Item>();
+        return new ArrayList<Item>(3) {{
+            add(new Item());
+            add(new Item());
+            add(new Item());
+        }};
     }
 
     @Override
