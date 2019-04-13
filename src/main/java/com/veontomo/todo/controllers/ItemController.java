@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.veontomo.todo.model.Item;
+import com.veontomo.todo.model.Task;
 import com.veontomo.todo.model.ItemStatus;
 import com.veontomo.todo.model.TaskDTO;
 import com.veontomo.todo.persistence.ItemRepository;
@@ -44,7 +44,7 @@ public class ItemController {
     @RequestMapping
     public ModelAndView list(Principal principal, ModelMap params) {
         logger.info("Principal {}", principal.toString());
-        final Iterable<Item> items = repo.getAll();
+        final Iterable<Task> items = repo.getAll();
         params.addAttribute("items", items);
         if (principal != null) {
             params.addAttribute("userName", principal.getName());
@@ -53,7 +53,7 @@ public class ItemController {
     }
 
     @GetMapping("/new")
-    public ModelAndView newItemPage(@ModelAttribute Item item, Principal principal, ModelMap params) {
+    public ModelAndView newItemPage(@ModelAttribute Task item, Principal principal, ModelMap params) {
         if (principal != null) {
             params.addAttribute("userName", principal.getName());
         }
@@ -67,7 +67,7 @@ public class ItemController {
             return new ModelAndView("items/new", "formErrors", result.getAllErrors());
         }
 
-        final Item task = this.convertToTask(taskDto);
+        final Task task = this.convertToTask(taskDto);
         task.setOwner(principal.getName());
         task.setCreatedTime(new Date(System.currentTimeMillis()));
         repo.save(task);
@@ -82,13 +82,13 @@ public class ItemController {
      * @param createdDate Date when the instance 
      * @return
      */
-    private Item convertToTask(TaskDTO taskDto) {
+    private Task convertToTask(TaskDTO taskDto) {
         if (taskDto != null) {
             final ItemStatus rawStatus = ItemStatus.getById(taskDto.getStatus());
             final ItemStatus status = rawStatus != null ? rawStatus : ItemStatus.TODO;
             final Long dueTms = taskDto.getDueDate();
             final Date dueDate = dueTms != null ? new Date(dueTms) : null;
-            return new Item(taskDto.getId(), taskDto.getTitle(), taskDto.getDescription(), status, dueDate, null, null);
+            return new Task(taskDto.getId(), taskDto.getTitle(), taskDto.getDescription(), status, dueDate, null, null);
         }
         return null;
     }

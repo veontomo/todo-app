@@ -3,7 +3,7 @@ package com.veontomo.todo.persistence;
 import java.util.ArrayList;
 import java.sql.Date;
 
-import com.veontomo.todo.model.Item;
+import com.veontomo.todo.model.Task;
 import com.veontomo.todo.model.ItemStatus;
 import com.veontomo.todo.model.User;
 
@@ -17,23 +17,24 @@ import com.veontomo.todo.model.User;
 public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
-    public Iterable<Item> getAll() {
+    public Iterable<Task> getAll() {
         // TODO Auto-generated method stub
-        return new ArrayList<Item>(3) {{
-            add(new Item(1l, "todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
-            add(new Item(2l, "add tests", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
-            add(new Item(3l, "add actuators", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+        return new ArrayList<Task>(3) {{
+            final Date now = new Date(System.currentTimeMillis());
+            add(new Task(1l, "todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), "user", now));
+            add(new Task(2l, "add tests", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), "admin", now));
+            add(new Task(3l, "add actuators", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), "user", now));
         }};
     }
 
     @Override
-    public Item save(Item item) {
+    public Task save(Task item) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Item findById(Long id) {
+    public Task findById(Long id) {
         // TODO Auto-generated method stub
         return null;
     }

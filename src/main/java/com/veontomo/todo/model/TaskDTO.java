@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * A DTO for {@link Item}
+ * A DTO for {@link Task}
  * @author Andrew
  *
  */

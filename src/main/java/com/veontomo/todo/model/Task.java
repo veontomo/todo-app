@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
  * @author Andrew
  *
  */
-public class Item {
+public class Task {
 
     /**
      * task's id
@@ -51,7 +51,7 @@ public class Item {
      */
     private String owner;
 
-    public Item(Long id, String title, String description, ItemStatus status, Date dueDate, String owner, Date created) {
+    public Task(Long id, String title, String description, ItemStatus status, Date dueDate, String owner, Date created) {
         super();
         this.id = id;
         this.title = title;

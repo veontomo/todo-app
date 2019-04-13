@@ -1,20 +1,20 @@
 package com.veontomo.todo.persistence;
 
-import com.veontomo.todo.model.Item;
+import com.veontomo.todo.model.Task;
 
 public interface ItemRepository {
     /**
      * Retrieve all todo items
      * @return
      */
-    Iterable<Item> getAll();
+    Iterable<Task> getAll();
 
     /**
      * Save the todo item
      * @param item
      * @return
      */
-    Item save(Item item);
+    Task save(Task item);
 
     /**
      * Retrieve an item by its id. 
@@ -22,7 +22,7 @@ public interface ItemRepository {
      * @param id
      * @return
      */
-    Item findById(Long id);
+    Task findById(Long id);
 
     /**
      * Delete a todo item with given id. 
