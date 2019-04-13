@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.veontomo.todo.model.Item;
+import com.veontomo.todo.model.ItemStatus;
 import com.veontomo.todo.persistence.ItemRepository;
 
 /**
@@ -54,12 +55,19 @@ public class ItemController {
         if (principal != null) {
             params.addAttribute("userName", principal.getName());
         }
+        params.addAttribute("statuses", new ItemStatus[] { ItemStatus.TODO, ItemStatus.INPROGRESS });
         return new ModelAndView("items/new");
     }
 
     @PostMapping("/create")
     public ModelAndView create(@Valid Item item, BindingResult result, RedirectAttributes redirect, Principal principal) {
-        return null;
+        if (result.hasErrors()) {
+            return new ModelAndView("items/new", "formErrors", result.getAllErrors());
+        }
+        repo.save(item);
+
+        return new ModelAndView("redirect:/items");
+
     }
 
 }
