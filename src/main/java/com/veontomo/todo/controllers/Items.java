@@ -13,7 +13,7 @@ import com.veontomo.todo.persistence.ItemRepository;
  *
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/items")
 public class Items {
     
     private final ItemRepository repo;

@@ -16,6 +16,10 @@
                 <tr th:if="${items.empty}">
                     <td colspan="3">Hoorah, nothing to do!</td>
                 </tr>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.title}"></td>
+                    <td th:text="${#calendars.format(item.dueDate)}">July 11, 2012 2:17:16 PM CDT</td>
+                </tr>
             </tbody>
         </table>
     </div>
