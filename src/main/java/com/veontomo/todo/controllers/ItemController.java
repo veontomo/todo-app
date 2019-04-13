@@ -55,7 +55,7 @@ public class ItemController {
         if (principal != null) {
             params.addAttribute("userName", principal.getName());
         }
-        params.addAttribute("statuses", new ItemStatus[] { ItemStatus.TODO, ItemStatus.INPROGRESS });
+        params.addAttribute("statuses", ItemStatus.values());
         return new ModelAndView("items/new");
     }
 
