@@ -1,17 +1,15 @@
 package com.veontomo.todo.model;
 
-import java.sql.Date;
-
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * A mutable ADT for representing a todo item.
+ * A DTO for {@link Item}
  * @author Andrew
  *
  */
-public class Item {
-
+public class TaskDTO {
     /**
      * task's id
      */
@@ -33,33 +31,31 @@ public class Item {
     /**
      * current status
      */
-
-    private ItemStatus status;
-
-    /**
-     * time when the item is created 
-     */
-    private Date createdDate;
+    @NotNull
+    private int status;
 
     /**
-     * time by which the task should be done
+     * task's creation time stamp 
      */
-    private Date dueDate;
+    private long createdDate;
 
     /**
-     * owner of the task
+     * task's due time stamp
      */
-    private User owner;
+    private Long dueDate;
 
-    public Item(Long id, String title, String description, ItemStatus status, Date dueDate, User owner) {
-        super();
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
         this.id = id;
-        this.title = title;
-        this.description = description;
-        this.status = status;
-        this.dueDate = dueDate;
-        this.owner = owner;
-        this.setCreatedTime(new Date(System.currentTimeMillis()));
     }
 
     /**
@@ -93,73 +89,43 @@ public class Item {
     /**
      * @return the status
      */
-    public ItemStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(ItemStatus status) {
+    public void setStatus(int status) {
         this.status = status;
+    }
+
+    /**
+     * @return the createdDate
+     */
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate the createdDate to set
+     */
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
     }
 
     /**
      * @return the dueDate
      */
-    public Date getDueDate() {
+    public Long getDueDate() {
         return dueDate;
     }
 
     /**
      * @param dueDate the dueDate to set
      */
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(Long dueDate) {
         this.dueDate = dueDate;
     }
-
-    /**
-     * @return the owner
-     */
-    public User getOwner() {
-        return owner;
-    }
-
-    /**
-     * @param owner the owner to set
-     */
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    /**
-     * @return the createdDate
-     */
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    /**
-     * @param createdDate the createdTime to set
-     */
-    public void setCreatedTime(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    
 
 }
