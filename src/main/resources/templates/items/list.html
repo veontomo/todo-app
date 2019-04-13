@@ -3,12 +3,18 @@
     xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
     layout:decorator="layout">
 <head>
-<title>Todo items</title>
+<title>TODO | Tasks</title>
+<link rel="stylesheet" type="text/css"
+    th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+
 </head>
 <body>
-    <div layout:fragment="content" class="container">
+    <div class="col-6 offset-2">
+        <h1>List of all tasks</h1>
+        <div th:if="${items.empty}">Hooray, there is nothing to do left!</div>
         <table class="table table-bordered table-striped">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <td>Title</td>
                     <td>Description</td>
@@ -18,22 +24,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${items.empty}">
-                    <td colspan="3">Hoorah, nothing to do!</td>
-                </tr>
+
                 <tr th:each="item : ${items}">
                     <td th:text="${item.title}">short description</td>
-                    <td th:text="${item.description}">full description</td>
-                    <td th:text="${item.status.value}">full description</td>
+                    <td th:text="${item.description}">full
+                        description</td>
+                    <td th:text="${item.status.value}">full
+                        description</td>
                     <td th:text="${#calendars.format(item.createdDate)}">July
                         11, 2012 2:17:16 PM CDT</td>
-                         <td th:text="${#calendars.format(item.dueDate)}">July
+                    <td th:text="${#calendars.format(item.dueDate)}">July
                         11, 2012 2:17:16 PM CDT</td>
                 </tr>
             </tbody>
         </table>
+        <div class="align-right">
+            <a href="#" th:href="@{'/items/new'}"
+                class="btn btn-primary">Create new task</a>
+        </div>
     </div>
-    <a href="#" th:href="@{'/items/new'}">Create new task</a>
-<!--     <a href="form.html" th:href="@{/(form)}">Create task 2</a> -->
 </body>
 </html>
