@@ -4,11 +4,7 @@
 <title>Todo items</title>
 </head>
 <body>
-    <h1 layout:fragment="header">Users : View all</h1>
     <div layout:fragment="content" class="container">
-        <div class="pull-right">
-            <a href="form.html" th:href="@{/(form)}">Create User</a>
-        </div>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -19,10 +15,6 @@
             <tbody>
                 <tr th:if="${items.empty}">
                     <td colspan="3">Hoorah, nothing to do!</td>
-                </tr>
-                <tr th:each="item : ${items}">
-                    <td><a href="view.html" th:href="" th:text="${item.title}">Title</a></td>
-                    <td th:text="${#calendars.format(item.dueDate)}">July 11, 2012 2:17:16 PM CDT</td>
                 </tr>
             </tbody>
         </table>
