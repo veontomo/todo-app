@@ -3,18 +3,33 @@
     xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
     layout:decorator="layout">
 <head>
-<title>Create a new task</title>
+<title>TODO | Create task</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" type="text/css"
+    th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-    <form id="item" th:action="@{'/create'}" th:object="${item}"
-        action="#" method="post">
-        <label for="title">Title</label> <input type="text"
-            th:field="*{title}" /> <label for="description">Description</label>
-        <input type="text" th:field="*{description}" />
-        <div class="form-actions">
-            <input type="submit" value="Save" />
-        </div>
-    </form>
+    <div class="col-6 offset-2">
+        <h1>Create a new task</h1>
+        <form id="item" th:action="@{'/create'}" th:object="${item}"
+            action="#" method="post">
+            <div class="form-group">
+                <label for="title">Title</label> <input type="text"
+                    th:field="*{title}" class="form-control" />
 
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label> <input
+                    type="text" th:field="*{description}"
+                    class="form-control" />
+            </div>
+            <div class="align-right">
+                <input type="submit" value="Save"
+                    class="btn btn-primary" /> <a href="#"
+                    th:href="@{'/items/'}" th:text="Cancel"
+                    class="btn btn-danger">Cancel</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

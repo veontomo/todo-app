@@ -26,8 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .roles("USER");
     }
 
+    @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+            .antMatchers("/css/styles.css", "/css/bootstrap.min.css")
+            .permitAll()
             .anyRequest()
             .authenticated()
             .and()
