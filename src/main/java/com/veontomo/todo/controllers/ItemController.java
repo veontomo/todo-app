@@ -47,7 +47,10 @@ public class ItemController {
     }
 
     @GetMapping("/new")
-    public ModelAndView create(@ModelAttribute Item item) {
+    public ModelAndView create(@ModelAttribute Item item, Principal principal, ModelMap params) {
+        if (principal != null) {
+            params.addAttribute("userName", principal.getName());
+        }
         return new ModelAndView("items/new");
     }
 
