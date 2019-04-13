@@ -10,6 +10,11 @@ import java.sql.Date;
 public class Item {
 
     /**
+     * task's id
+     */
+    private Long id;
+
+    /**
      * Short description
      */
     private String title;
@@ -39,8 +44,9 @@ public class Item {
      */
     private User owner;
 
-    public Item(String title, String description, ItemStatus status, Date dueDate, User owner) {
+    public Item(Long id, String title, String description, ItemStatus status, Date dueDate, User owner) {
         super();
+        this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
@@ -132,5 +138,21 @@ public class Item {
     public void setCreatedTime(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
 
 }

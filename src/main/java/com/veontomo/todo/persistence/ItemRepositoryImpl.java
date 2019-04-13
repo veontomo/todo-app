@@ -20,9 +20,9 @@ public class ItemRepositoryImpl implements ItemRepository {
     public Iterable<Item> getAll() {
         // TODO Auto-generated method stub
         return new ArrayList<Item>(3) {{
-            add(new Item("todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
-            add(new Item("add tests", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
-            add(new Item("add actuators", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+            add(new Item(1l, "todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+            add(new Item(2l, "add tests", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+            add(new Item(3l, "add actuators", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
         }};
     }
 
