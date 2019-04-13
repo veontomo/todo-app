@@ -9,15 +9,45 @@ import java.sql.Date;
  */
 public class Item {
 
+    /**
+     * Short description
+     */
     private String title;
-    
+
+    /**
+     * Full description
+     */
     private String description;
-    
+
+    /**
+     * current status
+     */
     private ItemStatus status;
-    
+
+    /**
+     * time when the item is created 
+     */
+    private Date createdDate;
+
+    /**
+     * time by which the task should be done
+     */
     private Date dueDate;
-    
+
+    /**
+     * owner of the task
+     */
     private User owner;
+
+    public Item(String title, String description, ItemStatus status, Date dueDate, User owner) {
+        super();
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.dueDate = dueDate;
+        this.owner = owner;
+        this.setCreatedTime(new Date(System.currentTimeMillis()));
+    }
 
     /**
      * @return the title
@@ -88,5 +118,19 @@ public class Item {
     public void setOwner(User owner) {
         this.owner = owner;
     }
-    
+
+    /**
+     * @return the createdDate
+     */
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate the createdTime to set
+     */
+    public void setCreatedTime(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
 }

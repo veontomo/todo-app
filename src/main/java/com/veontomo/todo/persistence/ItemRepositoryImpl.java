@@ -1,8 +1,11 @@
 package com.veontomo.todo.persistence;
 
 import java.util.ArrayList;
+import java.sql.Date;
 
 import com.veontomo.todo.model.Item;
+import com.veontomo.todo.model.ItemStatus;
+import com.veontomo.todo.model.User;
 
 /**
  * Implementation of {@link ItemRepository}.
@@ -17,9 +20,9 @@ public class ItemRepositoryImpl implements ItemRepository {
     public Iterable<Item> getAll() {
         // TODO Auto-generated method stub
         return new ArrayList<Item>(3) {{
-            add(new Item());
-            add(new Item());
-            add(new Item());
+            add(new Item("todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+            add(new Item("add tests", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
+            add(new Item("add actuators", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), new User()));
         }};
     }
 
