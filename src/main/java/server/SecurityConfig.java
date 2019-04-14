@@ -15,10 +15,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/api/tasks")
+            .antMatchers("/api/user/**")
             .authenticated()
-            .antMatchers("/api/tasks/admin/**")
-            .hasRole("ADMIN");
+            .antMatchers("/api/admin/**")
+            .permitAll();
+//            .hasRole("ADMIN");
     }
 
 }

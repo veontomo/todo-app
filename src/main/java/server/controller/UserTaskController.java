@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.veontomo.todo.model.Task;
-import com.veontomo.todo.persistence.ItemRepository;
+
+import server.presistence.ItemRepository;
 
 /**
  * Implementation of tasks CRUD operations for user role.
@@ -27,16 +28,22 @@ public class UserTaskController implements ITaskController {
     @Autowired
     public UserTaskController(ItemRepository repo) {
         this.repo = repo;
-        logger.info("Task controller is ready.");
+        logger.info("User task controller is ready.");
     }
 
     @Override
     public List<Task> getTasks(String username) {
-        return repo.getAll();
+        return repo.getUserTasks(username);
     }
 
     @Override
     public Task save(String usernamel, Task task) {
+        return null;
+    }
+
+    @Override
+    public Task deleteUserTask(String username, Long id) {
+        // TODO Auto-generated method stub
         return null;
     }
 

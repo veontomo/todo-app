@@ -22,7 +22,7 @@ public interface ITaskController {
      * @param username
      * @return
      */
-    @GetMapping("/tasks")
+    @GetMapping("")
     public List<Task> getTasks(String username);
 
     /**
@@ -34,7 +34,7 @@ public interface ITaskController {
      * @param task
      * @return a newly save task
      */
-    @PostMapping("/task/create")
+    @PostMapping("/create")
     public Task save(String username, Task task);
 
     /**
@@ -44,7 +44,7 @@ public interface ITaskController {
      * @param task
      * @return the deleted task or null if no task was found
      */
-    @DeleteMapping("/task/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Task deleteUserTask(String username, @PathVariable Long id);
 
 }

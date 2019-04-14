@@ -1,4 +1,4 @@
-package com.veontomo.todo.persistence;
+package server.presistence;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -42,6 +42,12 @@ public class ItemRepositoryImpl implements ItemRepository {
     public boolean deleteById(Long id) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public List<Task> getUserTasks(String username) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.veontomo.todo.model.Task;
-import com.veontomo.todo.persistence.ItemRepository;
+
+import server.presistence.ItemRepository;
 
 /**
  * Implementation of tasks CRUD operations for admin role.
