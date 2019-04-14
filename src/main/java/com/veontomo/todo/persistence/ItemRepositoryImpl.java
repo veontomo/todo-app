@@ -1,11 +1,11 @@
 package com.veontomo.todo.persistence;
 
-import java.util.ArrayList;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.veontomo.todo.model.Task;
 import com.veontomo.todo.model.ItemStatus;
-import com.veontomo.todo.model.User;
+import com.veontomo.todo.model.Task;
 
 /**
  * Implementation of {@link ItemRepository}.
@@ -17,7 +17,7 @@ import com.veontomo.todo.model.User;
 public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
-    public Iterable<Task> getAll() {
+    public List<Task> getAll() {
         return new ArrayList<Task>(3) {{
             final Date now = new Date(System.currentTimeMillis());
             add(new Task(1l, "todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), "user", now));

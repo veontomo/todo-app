@@ -1,4 +1,4 @@
-package com.veontomo.todo.controllers;
+package server.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
