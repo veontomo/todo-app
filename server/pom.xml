@@ -13,7 +13,7 @@
     <artifactId>todo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>todo</name>
-    <description>TODO application</description>
+    <description>TODO application: server</description>
 
     <properties>
         <java.version>1.8</java.version>

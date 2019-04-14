@@ -28,7 +28,7 @@ public class AdminTaskController implements ITaskController {
     @Autowired
     public AdminTaskController(ItemRepository repo) {
         this.repo = repo;
-        logger.info("Task controller is ready.");
+        logger.info("Admin task controller is ready.");
     }
 
     @Override
