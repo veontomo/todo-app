@@ -30,14 +30,14 @@ import com.veontomo.todo.persistence.ItemRepository;
  */
 @Controller
 @RequestMapping("/items")
-public class TaskController {
+public class WebClientController {
 
     private final ItemRepository repo;
 
-    private static Logger logger = LoggerFactory.getLogger(TaskController.class);
+    private static Logger logger = LoggerFactory.getLogger(WebClientController.class);
 
     @Autowired
-    public TaskController(ItemRepository repo) {
+    public WebClientController(ItemRepository repo) {
         this.repo = repo;
     }
 
