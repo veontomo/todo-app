@@ -1,4 +1,4 @@
-package server;
+package com.veontomo.todo.server;
 
 import java.util.Collections;
 
@@ -24,7 +24,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(new Class[] { Server.class, SecurityConfig.class });
+        SpringApplication app = new SpringApplication(new Class[] { Server.class, ResourceServerConfig.class, AuthorizationServerConfig.class, SecurityConfig.class });
         app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
         app.run(args);
     }

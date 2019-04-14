@@ -10,9 +10,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -52,9 +49,10 @@ public class WebClientController {
         RestTemplate restTemplate = new RestTemplate();
         List<Task> tasks = null;
         try {
-            ResponseEntity<List<Task>> response = restTemplate.exchange(serverUrl + "/api/user", HttpMethod.GET, null, new ParameterizedTypeReference<List<Task>>() {
-            });
-            tasks = response.getBody();
+            // ResponseEntity<List<Task>> response = restTemplate.exchange(serverUrl + "/api/user", HttpMethod.GET, null, new ParameterizedTypeReference<List<Task>>() {
+            // });
+            tasks = restTemplate.getForObject(serverUrl + "/api/user", List.class);
+            // tasks = response.getBody();
         } catch (ResourceAccessException e) {
             logger.error("Failed to connect: {}", e);
             tasks = new ArrayList<Task>(0);
