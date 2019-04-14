@@ -6,11 +6,18 @@ import com.veontomo.todo.model.Task;
 
 public interface ItemRepository {
     /**
-     * Retrieve all todo items
+     * Retrieve all tasks
      * @return
      */
     List<Task> getAll();
 
+    /**
+     * Return a list of all tasks by a user with a given username. 
+     * @param username
+     * @return
+     */
+    List<Task> getUserTasks(String username);
+    
     /**
      * Save the todo item
      * @param item

@@ -59,7 +59,6 @@ public class WebClientController {
         }
 
         final Task task = this.convertToTask(taskDto);
-        task.setOwner(principal.getName());
         task.setCreatedTime(new Date(System.currentTimeMillis()));
         // repo.save(task);
 
