@@ -46,11 +46,6 @@ public class Task {
      */
     private Date dueDate;
 
-    /**
-     * user name of the task owner
-     */
-    private String owner;
-
     public Task(Long id, String title, String description, ItemStatus status, Date dueDate, String owner, Date created) {
         super();
         this.id = id;
@@ -58,7 +53,6 @@ public class Task {
         this.description = description;
         this.status = status;
         this.dueDate = dueDate;
-        this.owner = owner;
         this.createdDate = created;
     }
 
@@ -116,20 +110,6 @@ public class Task {
      */
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
-    }
-
-    /**
-     * @return the owner
-     */
-    public String getOwner() {
-        return owner;
-    }
-
-    /**
-     * @param owner the owner to set
-     */
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 
     /**

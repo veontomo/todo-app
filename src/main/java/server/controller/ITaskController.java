@@ -61,7 +61,7 @@ public interface ITaskController {
      * @param task
      * @return the deleted task or null if no task was found
      */
-    @DeleteMapping("/tasks/delete")
+    @DeleteMapping("/tasks/admin/delete")
     @Secured("USER")
     public Task deleteUserTask(Principal principal, Task task);
 
