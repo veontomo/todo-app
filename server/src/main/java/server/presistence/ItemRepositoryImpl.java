@@ -47,7 +47,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public List<Task> getUserTasks(String username) {
         // TODO Auto-generated method stub
-        return null;
+        return getAll();
     }
 
 }

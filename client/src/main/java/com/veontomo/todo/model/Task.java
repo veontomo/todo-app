@@ -56,6 +56,16 @@ public class Task {
         this.createdDate = created;
     }
 
+    public Task() {
+        this.id = -1l;
+        this.title = "";
+        this.description = "";
+        this.status = null;
+        this.dueDate = null;
+        this.createdDate = null;
+
+    }
+
     /**
      * @return the title
      */
