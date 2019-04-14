@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/css/styles.css", "/css/bootstrap.min.css")
+            .antMatchers("/css/styles.css", "/css/bootstrap.min.css", "/css/fontawesome.css")
             .permitAll()
             .anyRequest()
             .authenticated()

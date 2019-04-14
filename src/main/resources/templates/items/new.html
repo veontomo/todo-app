@@ -5,6 +5,7 @@
 <title>TODO | Create task</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}" />
 </head>
 <body>
     <div th:if="${userName}" class="p-3 mb-2 bg-dark text-white">
@@ -33,11 +34,41 @@
                     </select>
                 </div>
             </div>
+             <div class="form-group">
+                <label for="Due date">Due date</label>
+                <textarea th:field="*{dueDate}" class="form-control"></textarea>
+            </div>
+            
+            
             <div class="align-right">
                 <input type="submit" value="Save" class="btn btn-primary" /> <a href="#" th:href="@{'/items/'}"
                     th:text="Cancel" class="btn btn-danger">Cancel</a>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                    data-target="#datetimepicker1" />
+                                <div class="input-group-append" data-target="#datetimepicker1"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </form>
     </div>
 </body>
+<script type="text/javascript">
+	$(function() {
+		$('#datetimepicker1').datetimepicker();
+	});
+</script>
 </html>
