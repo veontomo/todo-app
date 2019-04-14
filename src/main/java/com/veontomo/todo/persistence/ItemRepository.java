@@ -1,5 +1,7 @@
 package com.veontomo.todo.persistence;
 
+import java.util.List;
+
 import com.veontomo.todo.model.Task;
 
 public interface ItemRepository {
@@ -7,7 +9,7 @@ public interface ItemRepository {
      * Retrieve all todo items
      * @return
      */
-    Iterable<Task> getAll();
+    List<Task> getAll();
 
     /**
      * Save the todo item

@@ -32,20 +32,13 @@ import com.veontomo.todo.persistence.ItemRepository;
 @RequestMapping("/items")
 public class WebClientController {
 
-    private final ItemRepository repo;
-
     private static Logger logger = LoggerFactory.getLogger(WebClientController.class);
-
-    @Autowired
-    public WebClientController(ItemRepository repo) {
-        this.repo = repo;
-    }
 
     @RequestMapping
     public ModelAndView list(Principal principal, ModelMap params) {
         logger.info("Principal {}", principal.toString());
-        final Iterable<Task> items = repo.getAll();
-        params.addAttribute("items", items);
+        // final Iterable<Task> items = repo.getAll();
+        // params.addAttribute("items", items);
         if (principal != null) {
             params.addAttribute("userName", principal.getName());
         }
@@ -70,7 +63,7 @@ public class WebClientController {
         final Task task = this.convertToTask(taskDto);
         task.setOwner(principal.getName());
         task.setCreatedTime(new Date(System.currentTimeMillis()));
-        repo.save(task);
+        // repo.save(task);
 
         return new ModelAndView("redirect:/items");
     }

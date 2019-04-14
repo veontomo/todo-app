@@ -18,7 +18,6 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public Iterable<Task> getAll() {
-        // TODO Auto-generated method stub
         return new ArrayList<Task>(3) {{
             final Date now = new Date(System.currentTimeMillis());
             add(new Task(1l, "todo app", "finish the app", ItemStatus.INPROGRESS, new Date(System.currentTimeMillis()), "user", now));

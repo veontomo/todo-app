@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.veontomo.todo.model.Task;
 
 /**
- * API for handling the tasks.
+ * API for task operations (CRUD)
  * @author Andrew
  *
  */
@@ -24,7 +24,7 @@ public interface ITaskController {
      * Only ADMIN have an access to this endpoint. 
      * @return
      */
-    @GetMapping("/tasks")
+    @GetMapping("/tasks/admin")
     @Secured("ADMIN")
     public List<Task> getAll();
 

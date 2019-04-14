@@ -23,12 +23,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authBuilder.inMemoryAuthentication()
             .withUser("user")
             .password(encoder.encode("pass"))
-            .roles("USER");
+            .roles("USER")
+            .and()
+            .withUser("admin")
+            .password(encoder.encode("pass"))
+            .roles("ADMIN");
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+            .antMatchers("/api/tasks")
+            .authenticated()
+            .antMatchers("/api/tasks/admin/**")
+            .hasRole("ADMIN")
             .antMatchers("/css/styles.css", "/css/bootstrap.min.css", "/css/fontawesome.css")
             .permitAll()
             .anyRequest()
