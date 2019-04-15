@@ -2,6 +2,8 @@ package com.veontomo.todo;
 
 import java.util.Arrays;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -23,12 +26,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author Andrew
  *
  */
+@EnableWebMvc
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
-    @Value("${todo-server.url}")
-    private static String serverUrl;
-    
+    private static Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -45,6 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http.authorizeRequests()
             .antMatchers("/items")
             .authenticated()
+            .antMatchers("/css/styles.css", "/css/bootstrap.min.css", "/css/fontawesome.css")
+            .permitAll()
+            // .anyRequest();
             .and()
             .formLogin();
 
@@ -53,6 +59,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
     @Configuration
     @EnableOAuth2Client
     protected static class OAuthClientConfig {
+
+        @Value("${todo-server.url}")
+        private String serverUrl;
+
         @Bean
         public OAuth2ProtectedResourceDetails resourceDetails() {
             final AuthorizationCodeResourceDetails details = new AuthorizationCodeResourceDetails();
@@ -68,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
         @Bean
         public OAuth2RestTemplate redditRestTemplate(final OAuth2ClientContext clientContext) {
+            logger.info("OAuth2RestTemplate");
             return new OAuth2RestTemplate(resourceDetails(), clientContext);
         }
     }
