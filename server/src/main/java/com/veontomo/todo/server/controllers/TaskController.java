@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.veontomo.todo.model.Status;
 import com.veontomo.todo.server.presistence.StatusRepository;
 
 @RestController
@@ -16,9 +17,10 @@ public class TaskController {
 
     @Autowired
     public TaskController(StatusRepository statusRepo) {
-        logger.info("Task controller");
-        logger.info("count: " + statusRepo.count());
+        logger.info("Task controller has started.");
         this.statusRepository = statusRepo;
+        // this.statusRepository.save(new Status("new status"));
+        logger.info("count: " + statusRepo.count());
 
     }
 
