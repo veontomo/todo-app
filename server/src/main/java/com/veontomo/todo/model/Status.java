@@ -1,19 +1,26 @@
 package com.veontomo.todo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
- * A POJO for representing a user
+ * Set of statuses of todo items
  * @author Andrew
  *
  */
-public class User {
-    /**
-     * user's id
-     */
+@Entity
+public class Status {
+
+    @Id
+    @GeneratedValue
     private Long id;
-    /**
-     * user's name
-     */
+
     private String name;
+
+    public Status() {
+        super();
+    }
 
     /**
      * @return the id
