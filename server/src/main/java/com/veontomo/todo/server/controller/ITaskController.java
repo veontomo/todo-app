@@ -1,4 +1,4 @@
-package server.controller;
+package com.veontomo.todo.server.controller;
 
 import java.util.List;
 
